@@ -1,0 +1,5 @@
+git clone <REPOSITORIO> -> git clone https://github.com/kiiwi22/exercicios.git
+git status
+git add <NOME DO ARQUIVO>
+git commit -m "MENSAGEM"
+git push
