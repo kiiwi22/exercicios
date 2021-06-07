@@ -1,7 +1,6 @@
 package contador;
 
 public class ContadorNumerosPares {
-	int soma;
 	
 	public int contaNumerosPares(int[] numeros) {
 		int totNumPar = 0;
@@ -14,18 +13,18 @@ public class ContadorNumerosPares {
 		return totNumPar;	
 	}
 	
-	public void somaNumeros(int[] numeros) {
-
+	public int somaNumeros(int[] numeros) {
+		int soma = 0;
 		for(int i = 0; i < numeros.length; i++) {
-			soma = numeros[i] + soma;
+			soma += numeros[i];
 		}
 		System.out.println(soma);
-		mediaNumeros(numeros);
+		return soma;
 	}
 	
-	 public void mediaNumeros(int[] numeros) {
-		 
-		 soma = soma / numeros.length;
-		 System.out.println(soma);
+	 public float mediaNumeros(int[] numeros) {
+		float media; 
+		media = (float) somaNumeros(numeros) / numeros.length;
+		return media; 
 	 }
 }
