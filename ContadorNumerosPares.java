@@ -13,4 +13,9 @@ public class ContadorNumerosPares {
 		return totNumPar;	
 	} 
 	
+	public int somaNumeros(int[] numeros){
+	   int soma = 0;
+           return soma;		
+	}
+	
 }
