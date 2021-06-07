@@ -1,5 +1,3 @@
-package contador;
-
 public class ContadorNumerosPares {
 	
 	public int contaNumerosPares(int[] numeros) {
