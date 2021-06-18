@@ -4,13 +4,10 @@ public class ProgressaoAritmetica {
     public Integer[] fazProgressaoAritmetica () {
 
         DadosProgressao dadosProgressao = leDadosProgressao();
-        int constantePermanente = dadosProgressao.getConstanteProgressao();
         Integer[] progressao = new Integer[dadosProgressao.getTamanhoProgressao()];
-        progressao[0] = 0;
 
         for (int i = 0; i < progressao.length; i++) {
-            progressao[i] = constantePermanente;
-            constantePermanente += dadosProgressao.getConstanteProgressao();
+            progressao[i] = (i + 1) * dadosProgressao.getConstanteProgressao();
         }
         return progressao;
     }
