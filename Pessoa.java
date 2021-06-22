@@ -1,7 +1,10 @@
 
 public class Pessoa {
+	
 	private String nome;
 	private int idade;
+	
+	public Pessoa(){}
 	
 	Pessoa(String nome, int idade){
 		this.nome = nome;
