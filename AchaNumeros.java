@@ -10,6 +10,7 @@ public class AchaNumeros {
 			}
 		}
 		int menor = maior;
+
 		for (int numeroArray : numeros) {
 			if (numeroArray < menor) {
 				menor = numeroArray;
