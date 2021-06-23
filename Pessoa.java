@@ -1,19 +1,8 @@
 
 public class Pessoa {
-	
 	private String nome;
 	private int idade;
 	
-<<<<<<< HEAD
-=======
-	public Pessoa(){}
-	
-	Pessoa(String nome, int idade){
-		this.nome = nome;
-		this.idade = idade;
-	}
-	
->>>>>>> 0772207e0b0658500289f897ab8663810679ee35
 	public String getNome() {
 		return nome;
 	}
