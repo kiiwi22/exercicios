@@ -3,7 +3,12 @@ import java.util.Scanner;
 
 public class CadastroPessoa {
 
+<<<<<<< HEAD
 	public PessoaA[] cadastraPessoa() {
+=======
+	public Pessoa[] cadastraPessoa() {
+
+>>>>>>> 062586919dd7eda5a527b9d490327af890b76758
 		Scanner valor = new Scanner(System.in);
 		Integer tamanho;
 		System.out.print("Quantas pessoas deseja cadastrar? ");
@@ -82,8 +87,14 @@ class PessoaA {
 /*
  * vai criar uma classe Pessoa com os campos nome e idade vai criar um array com
  * alguns objetos Pessoa e vai fazer uma busca por parte do nome da pessoa isso
- * vai ser informado pelo usu·rio e vai apresentar todas as pessoas que entrarem
+ * vai ser informado pelo usu√°rio e vai apresentar todas as pessoas que entrarem
  * no filtro nome final apresentar a menor e a maior idade se tu quiser deixar
+<<<<<<< HEAD
  * din‚mico pode solicitar a quantidade de registros pro usu·rio e informar o
  * nome e a idade de cada pessoa e depois apresenta essas informaÁıes
  */
+=======
+ * din√¢mico pode solicitar a quantidade de registros pro usu√°rio e informar o
+ * nome e a idade de cada pessoa e depois apresenta essas informa√ß√µes
+ */
+>>>>>>> 062586919dd7eda5a527b9d490327af890b76758
