@@ -4,51 +4,56 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CadastradorAnimal extends Animal{
+public class CadastradorAnimal {
 
 	public int quantidadeAnimaisCadastrados() {
-		
-		Scanner valor = new Scanner (System.in);
+
+		Scanner valor = new Scanner(System.in);
 		int quantidadeAnimais = 0;
 		System.out.println("Quantos animais deseja cadastrar?");
 		quantidadeAnimais = valor.nextInt();
-		
-		
 		return quantidadeAnimais;
 	}
-	
-	public ArrayList<Animal> cadastrandoAnimais(){
-		
-		ArrayList<Animal> animais = new ArrayList<Animal>(quantidadeAnimaisCadastrados());
-		Scanner valor = new Scanner (System.in);
-		
-		Animal[] animal = new Animal[quantidadeAnimaisCadastrados()];
-		int especie;
+
+	public ArrayList<Animal> cadastraAnimal() {
+
+		Scanner valor = new Scanner(System.in);
+		ArrayList<Animal> animalIndividual = new ArrayList();
+		int contador = quantidadeAnimaisCadastrados();
 		String nome;
 		Integer idade;
 		Double peso;
-		for(int i = 0; i <= quantidadeAnimaisCadastrados(); i++) {
-			animal[i] = new Animal();
-			System.out.println("Qual o nome do animal?");	
+		EspecieAnimal especie = null;
+		Integer especieTemp;
+
+		for (int i = 0; i < contador; i++) {
+
+			System.out.println("Qual o nome?");
 			nome = valor.next();
-			animal[i].setNome(nome);
-			System.out.println("Qual a idade do animal?");
+			System.out.println("Qual a idade?");
 			idade = valor.nextInt();
-			animal[i].setIdade(idade);
-			System.out.println("Qual o peso do animal?");
+			System.out.println("Qual o peso?");
 			peso = valor.nextDouble();
-			animal[i].setPeso(peso);
-			System.out.println("Qual a espécie do animal? Digite 1 - Leão, 2 - Elefante, ou 3 - Macaco");
-			especie = valor.nextInt();
-				switch(especie) {
-				case 1:animal[i].setEspecieAnimal(getEspecieAnimal().Leão);
-				case 2:animal[i].setEspecieAnimal(getEspecieAnimal().Elefante);
-				case 3:animal[i].setEspecieAnimal(getEspecieAnimal().Macaco);
-				default:
-					System.out.println("Código inválido.");
-				}
-			animais.add(animal[i]);
-		}	
-		return animais;
+			System.out.println("Qual a especie?");
+			especieTemp = valor.nextInt();
+
+			if (especieTemp == 1) {
+				especie = especie.LEAO;
+			} else if (especieTemp == 2) {
+				especie = especie.ELEFANTE;
+			} else if (especieTemp == 3) {
+				especie = especie.MACACO;
+			} else {
+				System.out.println("Código inválido!");
+			}
+
+			Animal animal = new Animal(nome, peso, idade, especie);
+
+			animalIndividual.add(animal);
+		}
+		System.out.println(animalIndividual);
+
+		return animalIndividual;
 	}
+
 }
