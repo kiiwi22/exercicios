@@ -1,10 +1,10 @@
-package zoologico;
+package atividadeZoologico;
 
 import java.util.Scanner;
 
 public class Leitor {
-
-    private static final Scanner scanner = new Scanner(System.in);
+	
+	private static final Scanner scanner = new Scanner(System.in);
 
     public Integer leInteiro(String mensagem){
         System.out.println(mensagem);

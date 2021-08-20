@@ -1,44 +1,53 @@
 package atividadeZoologico;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BuscadorAnimal {
 
-	public void buscaNomeAnimal(ArrayList<Animal> animal) {
-		Scanner valor = new Scanner(System.in);
-		String v = null;
-		System.out.println("Qual sua pesquisa?");
-		v = valor.next();
+	private Leitor leitor = new Leitor();
+
+	public Animal buscaNomeAnimal(ArrayList<Animal> animal) {
+
+		String mensagem = "Qual sua pesquisa?";
+		String v = this.leitor.leString(mensagem);
+		Animal animalBuscado = null;
 
 		for (Animal ref : animal) {
 			if (ref.getNome().toLowerCase().contains(v.toLowerCase())) {
-				System.out.println(ref);
+				animalBuscado = ref;
+				System.out.println(animalBuscado);
 			}
 		}
+		return animalBuscado;
 	}
 
-	public void pesquisaIdadeAnimal(ArrayList<Animal> animal) {
+	public Animal pesquisaAnimalMaiorIdade(ArrayList<Animal> animal) {
 		int idadeTemp = 0;
-		String nomeTemp = null;
+		Animal animalMaiorIdade = null;
 		for (Animal ref : animal) {
 			if (idadeTemp < ref.getIdade()) {
+				animalMaiorIdade = ref;
 				idadeTemp = ref.getIdade();
-				nomeTemp = ref.getNome();
 			}
 		}
-		System.out.println("O animal mais velho é " + nomeTemp + " com " + idadeTemp + " anos de idade.");
+		System.out.println("O animal mais velho é " + animalMaiorIdade.getNome() + " com " + animalMaiorIdade.getIdade()
+				+ " anos de idade.");
+		return animalMaiorIdade;
+
 	}
 
-	public void pesquisaPesoAnimal(ArrayList<Animal> animal) {
+	public Animal pesquisaAnimalMaiorPeso(ArrayList<Animal> animal) {
 		double pesoTemp = 0;
-		String nomeTemp = null;
+		Animal animalMaiorPeso = null;
 		for (Animal ref : animal) {
 			if (pesoTemp < ref.getPeso()) {
 				pesoTemp = ref.getPeso();
-				nomeTemp = ref.getNome();
+				animalMaiorPeso = ref;
 			}
 		}
-		System.out.println("O animal mais pesado é " + nomeTemp + " com " + pesoTemp + " Kilos.");
+		System.out.println("O animal mais pesado é " + animalMaiorPeso.getNome() + " com " + animalMaiorPeso.getPeso()
+				+ " Kilos.");
+		return animalMaiorPeso;
+
 	}
 }

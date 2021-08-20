@@ -7,7 +7,9 @@ public class ZoologicoMain {
 		BuscadorAnimal b = new BuscadorAnimal();
 		ArrayList<Animal> animais = c.cadastraAnimal();
 		b.buscaNomeAnimal(animais);
-		b.pesquisaIdadeAnimal(animais);
-		b.pesquisaPesoAnimal(animais);
+		b.pesquisaAnimalMaiorIdade(animais);
+		b.pesquisaAnimalMaiorPeso(animais);
+		
+	
 	}
 }
