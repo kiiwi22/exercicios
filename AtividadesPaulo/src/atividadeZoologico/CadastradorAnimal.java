@@ -8,8 +8,7 @@ public class CadastradorAnimal {
 	private Leitor leitor = new Leitor();
 
 	private Integer obtemQuantidadeAnimaisParaCadastro() {
-		String mensagem = "Quantos animais deseja cadastrar?";
-		Integer quantidadeAnimais = this.leitor.leInteiro(mensagem);
+		Integer quantidadeAnimais = this.leitor.leInteiro("Quantos animais deseja cadastrar?");
 		return quantidadeAnimais;
 	}
 
@@ -17,16 +16,12 @@ public class CadastradorAnimal {
 
 		ArrayList<Animal> animalIndividual = new ArrayList();
 		int contador = obtemQuantidadeAnimaisParaCadastro();
-		String mensagemNome = "Qual o nome?";
-		String mensagemIdade = "Qual a idade?";
-		String mensagemPeso = "Qual o peso?";
-		String mensagemEspecie = "Qual a especie?";
 		EspecieAnimal especie = null;
 		Integer especieTemp;
 
 		for (int i = 0; i < contador; i++) {
 
-			especieTemp = this.leitor.leInteiro(mensagemEspecie);
+			especieTemp = this.leitor.leInteiro("Qual a especie?");
 
 			if (especieTemp == 1) {
 				especie = especie.LEAO;
@@ -38,8 +33,8 @@ public class CadastradorAnimal {
 				System.out.println("Código inválido!");
 			}
 
-			Animal animal = new Animal(this.leitor.leString(mensagemNome), this.leitor.leDouble(mensagemPeso),
-					this.leitor.leInteiro(mensagemIdade), especie);
+			Animal animal = new Animal(this.leitor.leString("Qual o nome?"), this.leitor.leDouble("Qual o peso?"),
+					this.leitor.leInteiro("Qual a idade?"), especie);
 
 			animalIndividual.add(animal);
 		}

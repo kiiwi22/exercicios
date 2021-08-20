@@ -8,12 +8,11 @@ public class BuscadorAnimal {
 
 	public Animal buscaNomeAnimal(ArrayList<Animal> animal) {
 
-		String mensagem = "Qual sua pesquisa?";
-		String v = this.leitor.leString(mensagem);
+		String termoPesquisa = this.leitor.leString("Qual sua pesquisa?");
 		Animal animalBuscado = null;
 
 		for (Animal ref : animal) {
-			if (ref.getNome().toLowerCase().contains(v.toLowerCase())) {
+			if (ref.getNome().toLowerCase().contains(termoPesquisa.toLowerCase())) {
 				animalBuscado = ref;
 				System.out.println(animalBuscado);
 			}
