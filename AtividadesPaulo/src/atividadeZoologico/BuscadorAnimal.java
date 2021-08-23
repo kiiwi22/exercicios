@@ -15,6 +15,7 @@ public class BuscadorAnimal {
 			if (ref.getNome().toLowerCase().contains(termoPesquisa.toLowerCase())) {
 				animalBuscado = ref;
 				System.out.println(animalBuscado);
+				break;
 			}
 		}
 		return animalBuscado;
