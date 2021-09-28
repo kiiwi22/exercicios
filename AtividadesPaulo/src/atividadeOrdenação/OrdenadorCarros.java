@@ -7,20 +7,20 @@ public class OrdenadorCarros {
 
 	Leitor leitor = new Leitor();
 
-	public String escolheOrdenador(ArrayList<Carro> carro) {
+	public int escolheOrdenador(ArrayList<Carro> carro) {
 
-		String ordenadorEscolhido = null;
+		int ordenadorEscolhido = 0;
 		int confirmadorOrdenacao = this.leitor.leInteiro(
 				"Se deseja Ordenar por Ano digite '1'. Se deseja Ordenar por Marca digite '2'. Se deseja Ordenar por Potencia digite '3'.");
 		switch (confirmadorOrdenacao) {
 		case 1:
-			ordenadorEscolhido = "Ano";
+			ordenadorEscolhido = 1;
 			break;
 		case 2:
-			ordenadorEscolhido = "Marca";
+			ordenadorEscolhido = 2;
 			break;
 		case 3:
-			ordenadorEscolhido = "Potencia";
+			ordenadorEscolhido = 3;
 		default:
 			System.out.println("Código inválido.");
 		}
@@ -29,15 +29,21 @@ public class OrdenadorCarros {
 	}
 
 	public ArrayList<Carro> ordenadorCarros(ArrayList<Carro> carro) {
-		
-		if (escolheOrdenador(carro) == "Ano") {
+
+		switch (escolheOrdenador(carro)) {
+		case 1:
 			Collections.sort(carro, new ComparadorAno());
-		}else if (escolheOrdenador(carro) == "Marca") {
+			break;
+		case 2:
 			Collections.sort(carro, new ComparadorMarca());
-		}else if (escolheOrdenador(carro) == "Potencia") {
+			break;
+		case 3:
 			Collections.sort(carro, new ComparadorPotenciaMotor());
-		}else
-			System.out.println("faloow");
+			break;
+		default:
+			System.out.println("Código inválido.");
+		}
+
 		System.out.println(carro);
 		return carro;
 	}
