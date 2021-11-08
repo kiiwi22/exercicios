@@ -5,8 +5,8 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class MenuProgramaPets {
-	Map<Integer, String> pets = new TreeMap<Integer, String>();
-	Leitor leitor = new Leitor();
+	private Map<Integer, String> pets = new TreeMap<Integer, String>();
+	private Leitor leitor = new Leitor();
 
 	public void menuPets() {
 
@@ -42,14 +42,14 @@ public class MenuProgramaPets {
 
 	}
 
-	private Map<Integer, String> cadastraPet() {
+	private void cadastraPet() {
 		String nomeTemp;
 		Integer codigoTemp;
 		Pet p = new Pet(this.leitor.leString("nome:"), this.leitor.leInteiro("Código"));
 		nomeTemp = p.getNome();
 		codigoTemp = p.getCodigo();
 		pets.put(codigoTemp, nomeTemp);
-		return pets;
+
 	}
 
 	private void removePet(Map<Integer, String> pets) {
@@ -62,14 +62,13 @@ public class MenuProgramaPets {
 	}
 
 	private void listagemPets(Map<Integer, String> pets) {
-		Set<Pet> petsNomesOrdenados = new TreeSet<Pet>();
+		Set<String> petsNomesOrdenados = new TreeSet<String>();
 		String nomeTemp;
-		Integer codigoTemp;
+
 		for (Integer key : pets.keySet()) {
 			nomeTemp = pets.get(key);
-			codigoTemp = key;
-			Pet p = new Pet(nomeTemp, codigoTemp);
-			petsNomesOrdenados.add(p);
+
+			petsNomesOrdenados.add(nomeTemp);
 		}
 		System.out.println(petsNomesOrdenados);
 	}
