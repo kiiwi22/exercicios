@@ -51,23 +51,15 @@ public class GerenciadorPessoas {
 
 			switch (opcaoMenu) {
 			case 1:
-				Collections.sort(nomes);
-				System.out.println(nomes);
+				ordenaNomes(nomes);
 				break;
 
 			case 2:
-				Collections.sort(nomes);
-				Collections.reverse(nomes);
-				System.out.println(nomes);
+				ordenaNomesDecrescente(nomes);
 				break;
 
 			case 3:
-				String nomeTemp = this.leitor.leString("Qual nome deseja remover?");
-				for (String ref : nomes) {
-					if (ref.equalsIgnoreCase(nomeTemp)) {
-						nomes.remove(ref);
-					}
-				}
+				removeNome(nomes);
 				break;
 
 			case 4:
@@ -79,6 +71,35 @@ public class GerenciadorPessoas {
 			}
 
 		} while (opcaoMenu != 4);
+	}
+
+	private List<String> ordenaNomes(List<String> nomes) {
+		Collections.sort(nomes);
+		System.out.println(nomes);
+
+		return nomes;
+
+	}
+
+	private List<String> ordenaNomesDecrescente(List<String> nomes) {
+		Collections.sort(nomes);
+		Collections.reverse(nomes);
+		System.out.println(nomes);
+
+		return nomes;
+
+	}
+
+	private List<String> removeNome(List<String> nomes) {
+		String nomeTemp = this.leitor.leString("Qual nome deseja remover?");
+		for (String ref : nomes) {
+			if (ref.equalsIgnoreCase(nomeTemp)) {
+				nomes.remove(ref);
+			}
+		}
+
+		return nomes;
+
 	}
 
 }
