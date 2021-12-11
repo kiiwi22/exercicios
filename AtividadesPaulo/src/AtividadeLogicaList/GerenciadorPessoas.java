@@ -20,8 +20,8 @@ public class GerenciadorPessoas {
 
 	}
 
-	public List<String> cadastraNomes() {
-		List<String> nomes = new ArrayList<String>();
+	public ArrayList<String> cadastraNomes() {
+		ArrayList<String> nomes = new ArrayList<String>();
 		String nomeTemp;
 		Integer contador = qtdPessoas();
 		for (int i = 0; i < contador; i++) {
@@ -36,13 +36,12 @@ public class GerenciadorPessoas {
 
 		}
 		System.out.println(nomes);
-		menuNomes(nomes);
 
 		return nomes;
 
 	}
 
-	public void menuNomes(List<String> nomes) {
+	public void menuNomes(ArrayList<String> nomes) {
 		Integer opcaoMenu;
 		do {
 			opcaoMenu = this.leitor.leInteiro("1 - Listar nomes ordenados de forma crescente" + "\n"
@@ -73,24 +72,21 @@ public class GerenciadorPessoas {
 		} while (opcaoMenu != 4);
 	}
 
-	private List<String> ordenaNomes(List<String> nomes) {
+	private void ordenaNomes(ArrayList<String> nomes) {
 		Collections.sort(nomes);
 		System.out.println(nomes);
 
-		return nomes;
+		
 
 	}
 
-	private List<String> ordenaNomesDecrescente(List<String> nomes) {
-		Collections.sort(nomes);
+	private void ordenaNomesDecrescente(ArrayList<String> nomes) {
+		ordenaNomes(nomes);
 		Collections.reverse(nomes);
-		System.out.println(nomes);
-
-		return nomes;
 
 	}
 
-	private List<String> removeNome(List<String> nomes) {
+	private List<String> removeNome(ArrayList<String> nomes) {
 		String nomeTemp = this.leitor.leString("Qual nome deseja remover?");
 		for (String ref : nomes) {
 			if (ref.equalsIgnoreCase(nomeTemp)) {
