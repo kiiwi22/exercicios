@@ -8,6 +8,17 @@ public class PessoaBeans {
 	private String cpf;
 	private Date data;
 	private String sexo;
+	
+	public PessoaBeans() {}
+	
+	public PessoaBeans(Integer id, String nome, String cpf, Date data, String sexo) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.data = data;
+		this.sexo = sexo;
+	}
 
 	public PessoaBeans(String nome, String cpf) {
 		super();
