@@ -4,9 +4,11 @@ public class MarcaBeans {
 	private Integer id;
 	private String descricao;
 	
-	
+	public MarcaBeans(Integer id, String descricao) {
+		this.id = id;
+		this.descricao = descricao;
+	}
 	public MarcaBeans(String descricao) {
-		super();
 		this.descricao = descricao;
 	}
 	public String getDescricao() {

@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <title>Lista de Carros</title>
+<script type="text/javascript" src="ajax.js"></script>
 </head>
-<body>
+<body onload="carregaMarcas();">
 	<h1>Adicionar Carro</h1>
 	<form action="insert" method="post">
 		<table>
@@ -23,7 +24,20 @@
 			<td><input type="text" name="ano" placeholder="Ano" ></td>
 		</tr>
 		<tr>
-			<td><input type="text" name="idModelo" placeholder="idModelo" ></td>
+			<td>
+				<label for="marca">Marca:</label>
+				<select name="marca" id="marca" onchange="carregaModelos()">
+					 <option>Selecione</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Modelo: </label>
+				<select name="idModelo" id=idModelo>
+					<option>Selecione</option>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td><input type="text" name="idPessoa" placeholder="idPessoa" ></td>

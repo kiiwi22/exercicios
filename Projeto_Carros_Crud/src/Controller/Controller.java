@@ -20,13 +20,12 @@ import Model.PessoaBeans;
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	CarroBeans carro = new CarroBeans();
-	PessoaBeans pessoa = new PessoaBeans();
+	private final CarroBeans carro = new CarroBeans();
+	private final PessoaBeans pessoa = new PessoaBeans();
 
-	DAO dao = new DAO();
+	private final DAO dao = new DAO();
 
 	public Controller() {
-		super();
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -5,13 +5,16 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DAO {
-	private String driver = "com.mysql.cj.jdbc.Driver";
+	private String driver = "com.mysql.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/carros?useTimezone=true&serverTimezone=UTC";
 	private String user = "root";
-	private String password = "";
+	private String password = "root";
 
 	private Connection conectar() {
 		Connection con = null;
@@ -159,7 +162,7 @@ public class DAO {
 				String cpf = rst.getString(3);
 				Date data = rst.getDate(4);
 				String sexo = rst.getString(5);
-				
+
 				listaDePessoas.add(new PessoaBeans(id, nome, cpf, data, sexo));
 			}
 			con.close();
@@ -183,5 +186,37 @@ public class DAO {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+
+	public List<ModeloBeans> getModelosPorMarca(Integer idMarca) {
+		String sql = "select id, descricao, id_marca from modelo where id_marca = ?";
+		List<ModeloBeans> modelos = new ArrayList<>();
+		try (Connection con = conectar();) {
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, idMarca);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				modelos.add(new ModeloBeans(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return modelos;
+	}
+	
+	public List<MarcaBeans> getMarcas(){
+		final String sql = "select id, descricao from marca";
+		List<MarcaBeans> marcas = new ArrayList<>();
+		try (Connection con = conectar(); Statement st = con.createStatement()) {
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				marcas.add(new MarcaBeans(rs.getInt(1), rs.getString(2)));
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return marcas;
 	}
 }

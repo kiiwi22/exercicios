@@ -1,11 +1,23 @@
 package Model;
 
 public class ModeloBeans {
+	
 	private Integer id;
 	private String descricao;
 	private Integer idMarca;
 	private MarcaBeans marca;
 
+	public ModeloBeans(int id, String descricao, int idMarca) {
+		this.id = id;
+		this.descricao = descricao;
+		this.idMarca = idMarca;
+	}
+
+	public ModeloBeans(String descricao, MarcaBeans marca) {
+		this.descricao = descricao;
+		this.marca = marca;
+	}
+	
 	public MarcaBeans getMarca() {
 		return marca;
 	}
@@ -13,13 +25,7 @@ public class ModeloBeans {
 	public void setMarca(MarcaBeans marca) {
 		this.marca = marca;
 	}
-
-	public ModeloBeans(String descricao, MarcaBeans marca) {
-		super();
-		this.descricao = descricao;
-		this.marca = marca;
-	}
-
+	
 	public Integer getId() {
 		return id;
 	}
