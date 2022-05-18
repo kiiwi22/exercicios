@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAO {
-	private String driver = "com.mysql.jdbc.Driver";
+	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/carros?useTimezone=true&serverTimezone=UTC";
 	private String user = "root";
-	private String password = "root";
+	private String password = "";
 
 	private Connection conectar() {
 		Connection con = null;
