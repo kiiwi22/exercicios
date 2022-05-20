@@ -162,7 +162,7 @@ public class DAO {
 				String cpf = rst.getString(3);
 				Date data = rst.getDate(4);
 				String sexo = rst.getString(5);
-
+				
 				listaDePessoas.add(new PessoaBeans(id, nome, cpf, data, sexo));
 			}
 			con.close();
@@ -187,7 +187,7 @@ public class DAO {
 			System.out.println(e);
 		}
 	}
-
+	
 	public List<ModeloBeans> getModelosPorMarca(Integer idMarca) {
 		String sql = "select id, descricao, id_marca from modelo where id_marca = ?";
 		List<ModeloBeans> modelos = new ArrayList<>();
@@ -218,5 +218,32 @@ public class DAO {
 			ex.printStackTrace();
 		}
 		return marcas;
+	}
+
+	public List<PessoaBeans> getPessoas() {
+		String sql = "select id, nome from pessoa";
+		List<PessoaBeans> lista = new ArrayList<>();
+		try {
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(sql);
+			ResultSet rst = pst.executeQuery();
+			
+			while(rst.next()) {
+				PessoaBeans pessoa = new PessoaBeans();
+				pessoa.setId(rst.getInt(1));
+				pessoa.setNome(rst.getString(2));
+				CarroBeans carro = new CarroBeans();
+				carro.setIdPessoa(rst.getInt(1));
+				carro.setPessoa(pessoa);
+				lista.add(new PessoaBeans (rst.getInt(1), rst.getString(2)));
+				System.out.println(pessoa.getNome());
+			}
+			con.close();
+			return lista;
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+		
 	}
 }

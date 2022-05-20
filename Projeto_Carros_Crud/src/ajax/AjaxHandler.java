@@ -1,3 +1,4 @@
+
 package ajax;
 
 import java.io.IOException;
@@ -14,8 +15,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Model.DAO;
 import Model.MarcaBeans;
 import Model.ModeloBeans;
+import Model.PessoaBeans;
 
-@WebServlet(urlPatterns = {"/ajax-marcas","/ajax-modelos"})
+@WebServlet(urlPatterns = {"/ajax-marcas","/ajax-modelos", "/ajax-pessoas"})
 public class AjaxHandler extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -25,13 +27,16 @@ public class AjaxHandler extends HttpServlet {
 			throws ServletException, IOException {
 
 		String action = request.getServletPath();
-		
+		System.out.println(action);
 		switch(action) {
 			case "/ajax-marcas":
 				escreveMarcas(response);
 				break;
 			case "/ajax-modelos":
 				escreveModelos(request,response);
+			break;
+			case "/ajax-pessoas":
+				escrevePessoas(request,response);
 			break;
 		}
 		
@@ -53,5 +58,12 @@ public class AjaxHandler extends HttpServlet {
 		response.getWriter().write(mapper.writeValueAsString(marcas));
 	}
 	
+	private void escrevePessoas(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		ObjectMapper mapper = new ObjectMapper();
+		List<PessoaBeans> pessoas = dao.getPessoas();
+		System.out.println(pessoas);
+		response.setContentType("application/json");
+		response.getWriter().write(mapper.writeValueAsString(pessoas));
+	}
 	
 }

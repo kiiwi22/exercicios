@@ -1,3 +1,4 @@
+
 function carregaMarcas() {
 
 	httpRequest = new XMLHttpRequest();
@@ -16,7 +17,7 @@ function carregaMarcas() {
 
 				let array = httpRequest.response;
 				let select = document.getElementById("marca");
-				
+
 				for (let i = 0; i < array.length; i++) {
 					let option = new Option(array[i].descricao, array[i].id);
 					console.log(array[i]);
@@ -29,17 +30,17 @@ function carregaMarcas() {
 	}
 }
 
-function carregaModelos(){
+function carregaModelos() {
 	httpRequest = new XMLHttpRequest();
 
 	if (!httpRequest) {
 		console.log('Unable to create XMLHTTP instance');
 		return false;
 	}
-	
+
 	let marca = document.getElementById("marca").value;
-	
-	httpRequest.open('GET', 'ajax-modelos?id-marca='+marca);
+
+	httpRequest.open('GET', 'ajax-modelos?id-marca=' + marca);
 	httpRequest.responseType = 'json';
 	httpRequest.send();
 	httpRequest.onreadystatechange = function() {
@@ -59,4 +60,40 @@ function carregaModelos(){
 			}
 		}
 	}
+}
+
+function carregaPessoas() {
+
+	httpRequest = new XMLHttpRequest();
+
+	if (!httpRequest) {
+		console.log('Unable to create XMLHTTP instance');
+		return false;
+	}
+	httpRequest.open('GET', 'ajax-pessoas');
+	httpRequest.responseType = 'json';
+	httpRequest.send();
+	httpRequest.onreadystatechange = function() {
+		if (httpRequest.readyState === XMLHttpRequest.DONE) {
+
+			if (httpRequest.status === 200) {
+
+				let array = httpRequest.response;
+				let select = document.getElementById("pessoas");
+
+				for (let i = 0; i < array.length; i++) {
+					let option = new Option(array[i].nome, array[i].id);
+					console.log(array[i]);
+					select.appendChild(option);
+				}
+			} else {
+				console.log('Something went wrong..!!');
+			}
+		}
+	}
+
+	function carregaInfos() {
+			carregaPessoas();
+			carregaMarcas();
+		}
 }

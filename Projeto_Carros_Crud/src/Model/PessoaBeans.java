@@ -11,7 +11,15 @@ public class PessoaBeans {
 	
 	public PessoaBeans() {}
 	
+	public PessoaBeans(Integer id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
+
 	public PessoaBeans(Integer id, String nome, String cpf, Date data, String sexo) {
+		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
@@ -20,6 +28,7 @@ public class PessoaBeans {
 	}
 
 	public PessoaBeans(String nome, String cpf) {
+		super();
 		this.nome = nome;
 		this.cpf = cpf;
 	}
