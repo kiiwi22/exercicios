@@ -1,7 +1,6 @@
-
 function carregaMarcas() {
 
-	httpRequest = new XMLHttpRequest();
+	let httpRequest = new XMLHttpRequest();
 
 	if (!httpRequest) {
 		console.log('Unable to create XMLHTTP instance');
@@ -31,7 +30,7 @@ function carregaMarcas() {
 }
 
 function carregaModelos() {
-	httpRequest = new XMLHttpRequest();
+	let httpRequest = new XMLHttpRequest();
 
 	if (!httpRequest) {
 		console.log('Unable to create XMLHTTP instance');
@@ -64,7 +63,7 @@ function carregaModelos() {
 
 function carregaPessoas() {
 
-	httpRequest = new XMLHttpRequest();
+	let httpRequest = new XMLHttpRequest();
 
 	if (!httpRequest) {
 		console.log('Unable to create XMLHTTP instance');
@@ -77,11 +76,12 @@ function carregaPessoas() {
 		if (httpRequest.readyState === XMLHttpRequest.DONE) {
 
 			if (httpRequest.status === 200) {
-
 				let array = httpRequest.response;
 				let select = document.getElementById("pessoas");
+				select.innerHTML = "";
 
 				for (let i = 0; i < array.length; i++) {
+					debugger;
 					let option = new Option(array[i].nome, array[i].id);
 					console.log(array[i]);
 					select.appendChild(option);
@@ -92,8 +92,8 @@ function carregaPessoas() {
 		}
 	}
 
-	function carregaInfos() {
-			carregaPessoas();
-			carregaMarcas();
-		}
+}
+function carregaInfos() {
+	carregaPessoas();
+	carregaMarcas();
 }
