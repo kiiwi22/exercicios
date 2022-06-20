@@ -1,31 +1,55 @@
 package br.com.projeto.carros.model;
 
-import java.sql.Date;
-
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Integer id;
+
+	@Column(name = "nome")
 	private String nome;
+
+	@Column(name = "data_nascimento")
+	@Temporal(TemporalType.DATE)
+	private Date dataNascimento;
+
+	@Column(name = "cpf")
 	private String cpf;
-	private Date data;
+
+	@Column(name = "sexo")
+	private String sexo;
 
 	public Pessoa() {
 	}
 
-	public Pessoa(String nome, String cpf, Date data) {
+	public Pessoa(Integer id, String nome, Date dataNascimento, String cpf, String sexo) {
 		super();
+		this.id = id;
 		this.nome = nome;
+		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
-		this.data = data;
+		this.sexo = sexo;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -36,6 +60,14 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(java.sql.Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
 	public String getCpf() {
 		return cpf;
 	}
@@ -44,12 +76,11 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public Date getData() {
-		return data;
+	public String getSexo() {
+		return sexo;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
-
 }

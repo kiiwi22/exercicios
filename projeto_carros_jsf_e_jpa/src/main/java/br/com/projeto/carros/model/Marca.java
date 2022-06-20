@@ -1,25 +1,36 @@
 package br.com.projeto.carros.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "marca")
 public class Marca {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column(name = "id")
+	private Integer id;
+
+	@Column(name = "descricao")
 	private String descricao;
 
 	public Marca() {
 	}
 
-	public Marca(String descricao) {
+	public Marca(Integer id, String descricao) {
 		super();
+		this.id = id;
 		this.descricao = descricao;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDescricao() {
@@ -29,4 +40,5 @@ public class Marca {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 }

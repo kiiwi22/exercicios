@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Registra Carros</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2"> 
+		Chassi: <h:inputText value="#{carroBean.carro.chassi}" />
+		Renavam: <h:inputText value="#{carroBean.carro.renavam}" />
+		Placa: <h:inputText value="#{carroBean.carro.placa}" />
+		Ano: <h:inputText value="#{carroBean.carro.ano}" />
+		Modelo: <h:selectOneMenu value="#{carroBean.modelo}" converter="modeloConverter">
+				<f:selectItems value="#{carroBean.modelos}" var="modelo"
+					itemValue="#{modelo}" itemLabel="#{modelo.descricao}"></f:selectItems>
+			</h:selectOneMenu>
+		
+		Proprietário: <h:selectOneMenu value="#{carroBean.pessoa}" converter="pessoaConverter">
+				<f:selectItems value="#{carroBean.pessoas}" var="pessoa"
+					itemValue="#{pessoa}" itemLabel="#{pessoa.nome}"></f:selectItems>
+			</h:selectOneMenu>
+
+			<h:commandButton value="Salvar" action="#{carroBean.salva}" />
+		</h:panelGrid>
+	</h:form>
+	<h:link value="Voltar" outcome="index.xhtml" />
+</h:body>
+</html>

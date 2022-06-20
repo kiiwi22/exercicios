@@ -1,38 +1,62 @@
 package br.com.projeto.carros.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "carro")
+@Table(name="carro")
 public class Carro {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
+	private Integer id;
+	
+	@Column(name="chassi")
 	private String chassi;
+	
+	@Column(name="renavam")
 	private String renavam;
+	
+	@Column(name="placa")
 	private String placa;
-	private int ano;
+	
+	@Column(name="ano")
+	private Integer ano;
+	
 	@ManyToOne
+	@JoinColumn(name="id_modelo")
 	private Modelo modelo;
+	
 	@ManyToOne
+	@JoinColumn(name="id_pessoa")
 	private Pessoa pessoa;
+	
+	public Carro() {}
 
-	public Carro() {
-	}
-
-	public Carro(String chassi, String renavam, String placa, int ano, Modelo modelo, Pessoa pessoa) {
+	public Carro(Integer id, String chassi, String renavam, String placa, Integer ano, Modelo modelo, Pessoa pessoa) {
 		super();
+		this.id = id;
 		this.chassi = chassi;
 		this.renavam = renavam;
 		this.placa = placa;
 		this.ano = ano;
 		this.modelo = modelo;
 		this.pessoa = pessoa;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getChassi() {
@@ -59,11 +83,11 @@ public class Carro {
 		this.placa = placa;
 	}
 
-	public int getAno() {
+	public Integer getAno() {
 		return ano;
 	}
 
-	public void setAno(int ano) {
+	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
 
@@ -82,4 +106,5 @@ public class Carro {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+	
 }
